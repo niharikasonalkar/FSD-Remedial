@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Post Management</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f7f6;
+    color: #333;
+  }
+  header {
+    background: #a3d2ca;
+    padding: 20px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    color: #056676;
+  }
+  main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .post-card {
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+  .post-card h3 {
+    margin: 0 0 8px 0;
+    color: #056676;
+  }
+  .post-card p {
+    margin: 0 0 12px 0;
+    color: #555;
+  }
+  .post-card button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+  }
+  .edit-btn { background: #f7b267; }
+  .delete-btn { background: #f25f5c; }
+  .create-btn { background: #70c1b3; margin-bottom: 15px; }
+
+  form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+  }
+  form input, form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #056676;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  @media(max-width:600px){
+    .post-card { padding: 12px 15px; }
+    form { padding: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Blog Post Management</h1>
+</header>
+
+<main>
+  <button class="create-btn" onclick="showForm()">+ Create New Post</button>
+
+  <form id="postForm" style="display:none;">
+    <input type="text" id="title" placeholder="Post Title">
+    <textarea id="content" rows="5" placeholder="Post Content"></textarea>
+    <button type="button" onclick="addPost()">Save Post</button>
+  </form>
+
+  <div class="post-list" id="postList">
+    <!-- Posts will appear here -->
+  </div>
+</main>
+
+<script>
+  const postList = document.getElementById('postList');
+  const postForm = document.getElementById('postForm');
+  const titleInput = document.getElementById('title');
+  const contentInput = document.getElementById('content');
+
+  let posts = [];
+
+  function showForm() {
+    postForm.style.display = 'block';
+  }
+
+  function addPost() {
+    const title = titleInput.value.trim();
+    const content = contentInput.value.trim();
+
+    if(!title || !content){
+      alert("Both fields are required");
+      return;
+    }
+
+    const post = { title, content };
+    posts.push(post);
+    renderPosts();
+    postForm.style.display = 'none';
+    titleInput.value = '';
+    contentInput.value = '';
+  }
+
+  function editPost(index){
+    titleInput.value = posts[index].title;
+    contentInput.value = posts[index].content;
+    postForm.style.display = 'block';
+    // Temporarily remove original post
+    posts.splice(index, 1);
+    renderPosts();
+  }
+
+  function deletePost(index){
+    if(confirm("Are you sure you want to delete this post?")){
+      posts.splice(index,1);
+      renderPosts();
+    }
+  }
+
+  function renderPosts(){
+    postList.innerHTML = '';
+    posts.forEach((post, index) => {
+      const div = document.createElement('div');
+      div.className = 'post-card';
+      div.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+        <button class="edit-btn" onclick="editPost(${index})">Edit</button>
+        <button class="delete-btn" onclick="deletePost(${index})">Delete</button>
+      `;
+      postList.appendChild(div);
+    });
+  }
+</script>
+
+</body>
+</html>

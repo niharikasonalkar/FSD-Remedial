@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Catalog</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f2ec; /* light beige */
+    color: #2c2a29; /* dark brown text */
+  }
+
+  header {
+    background: #e3d9c1; /* soft beige header */
+    padding: 20px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    color: #1c1a18; /* almost black */
+    font-weight: 600;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  /* Admin Form */
+  .admin-form {
+    background: #fff8f0; /* very light beige */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+  }
+  .admin-form h2 {
+    margin-top: 0;
+    color: #2c2a29;
+  }
+  .admin-form input {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background: #f5f2ec;
+    color: #2c2a29;
+  }
+  .admin-form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #2c2a29; /* dark brown button */
+    color: #f5f2ec; /* light text */
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .admin-form button:hover {
+    background: #1c1a18; /* darker on hover */
+  }
+
+  /* Product Grid */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .product-card {
+    background: #e6dbc8; /* soft brown card */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  .product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .product-card h3 {
+    margin: 0 0 8px 0;
+    color: #1c1a18; /* dark text */
+  }
+  .product-card p {
+    margin: 0 0 12px 0;
+    color: #2c2a29;
+  }
+  .product-card button {
+    margin: 4px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #f5f2ec;
+  }
+  .edit-btn { background: #7b5e57; }
+  .edit-btn:hover { background: #5a4038; }
+  .delete-btn { background: #a03c3c; }
+  .delete-btn:hover { background: #6f2727; }
+
+  @media(max-width:600px){
+    .product-card { padding: 12px; }
+    .admin-form { padding: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Product Catalog</h1>
+</header>
+
+<main>
+
+  <!-- Admin Form -->
+  <div class="admin-form">
+    <h2>Admin Panel</h2>
+    <input type="text" id="productName" placeholder="Product Name">
+    <input type="text" id="productPrice" placeholder="Price (INR)">
+    <input type="text" id="productImage" placeholder="Image URL">
+    <button onclick="addProduct()">Add / Update Product</button>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid" id="productGrid">
+    <!-- Products will appear here -->
+  </div>
+
+</main>
+
+<script>
+  const productGrid = document.getElementById('productGrid');
+  const nameInput = document.getElementById('productName');
+  const priceInput = document.getElementById('productPrice');
+  const imageInput = document.getElementById('productImage');
+
+  let products = [];
+
+  function renderProducts(){
+    productGrid.innerHTML = '';
+    products.forEach((product, index)=>{
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>₹${product.price}</p>
+        <button class="edit-btn" onclick="editProduct(${index})">Edit</button>
+        <button class="delete-btn" onclick="deleteProduct(${index})">Delete</button>
+      `;
+      productGrid.appendChild(card);
+    });
+  }
+
+  function addProduct(){
+    const name = nameInput.value.trim();
+    const price = priceInput.value.trim();
+    const image = imageInput.value.trim();
+
+    if(!name || !price || !image){
+      alert("All fields are required.");
+      return;
+    }
+
+    products.push({name, price, image});
+    renderProducts();
+
+    nameInput.value = '';
+    priceInput.value = '';
+    imageInput.value = '';
+  }
+
+  function editProduct(index){
+    const product = products[index];
+    nameInput.value = product.name;
+    priceInput.value = product.price;
+    imageInput.value = product.image;
+    // Remove old product temporarily
+    products.splice(index,1);
+    renderProducts();
+  }
+
+  function deleteProduct(index){
+    if(confirm("Are you sure you want to delete this product?")){
+      products.splice(index,1);
+      renderProducts();
+    }
+  }
+</script>
+
+</body>
+</html>
