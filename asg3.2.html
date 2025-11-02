@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>User Profile Dashboard</title>
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fef8fb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .dashboard {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    width: 90%;
+    max-width: 600px;
+    overflow: hidden;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #f9e1e0, #c8edea);
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .header img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .header h2 {
+    margin: 12px 0 4px;
+    color: #333;
+  }
+
+  .header p {
+    color: #666;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .content {
+    padding: 25px 20px 30px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 12px;
+    border-left: 4px solid #c5b3e6;
+    padding-left: 8px;
+  }
+
+  .activities {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .activities li {
+    background-color: #fdf6fa;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #b7e4d6;
+    transition: background 0.3s ease;
+  }
+
+  .activities li:hover {
+    background-color: #faf1f5;
+  }
+
+  .add-activity {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .add-activity input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1.5px solid #ccc;
+    font-size: 1rem;
+  }
+
+  .add-activity button {
+    margin-left: 10px;
+    background-color: #b7e4d6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    color: #2e4b3d;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .add-activity button:hover {
+    background-color: #a2dac8;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 12px;
+    background: #fefbff;
+    font-size: 0.9rem;
+    color: #777;
+  }
+
+  @media (max-width: 480px) {
+    .header img {
+      width: 90px;
+      height: 90px;
+    }
+    .section-title {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+  <div class="header">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Animated Girl Avatar" />
+    <h2 id="userName">Niharika</h2>
+    <p id="userEmail">niharika@example.com</p>
+  </div>
+
+  <div class="content">
+    <h3 class="section-title">Recent Activities</h3>
+    <ul class="activities" id="activityList">
+      <li>Updated skincare blog ✨</li>
+      <li>Finished portfolio design 💻</li>
+      <li>Joined a front-end workshop 🎓</li>
+    </ul>
+
+    <div class="add-activity">
+      <input type="text" id="newActivity" placeholder="Add a new activity..." />
+      <button id="addBtn">Add</button>
+    </div>
+  </div>
+
+ 
+</div>
+
+<script>
+  const addBtn = document.getElementById("addBtn");
+  const newActivity = document.getElementById("newActivity");
+  const activityList = document.getElementById("activityList");
+
+  addBtn.addEventListener("click", () => {
+    const activityText = newActivity.value.trim();
+    if (activityText === "") return;
+    const li = document.createElement("li");
+    li.textContent = activityText;
+    activityList.appendChild(li);
+    newActivity.value = "";
+  });
+</script>
+
+</body>
+</html>

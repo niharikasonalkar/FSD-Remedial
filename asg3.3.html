@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skincare Product Gallery</title>
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #fff9fb;
+    color: #333;
+  }
+
+  header {
+    background: linear-gradient(135deg, #f8dce2, #d2ecf0);
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  header h1 {
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    padding: 35px;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.2s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .product-card h3 {
+    margin: 12px 0 5px;
+    color: #444;
+    font-size: 1.1rem;
+  }
+
+  .product-card p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .price {
+    color: #2e8b57;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .btn {
+    background: #d2ecf0;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #2c5547;
+    font-weight: 600;
+  }
+
+  .btn:hover {
+    background: #bde4ea;
+  }
+
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .modal-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .close-btn {
+    background: #f8dce2;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #444;
+  }
+
+  .close-btn:hover {
+    background: #f2c0ce;
+  }
+
+  @media (max-width: 480px) {
+    header h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Nini Skincare Gallery</h1>
+</header>
+
+<section class="gallery">
+  <div class="product-card">
+    <img src="https://atalieneskincare.com/cdn/shop/files/OilCleanser-SeaBuckthornSqualane_3.jpg?v=1685755057&width=400" alt="Face Serum">
+    <h3>Hydrating Face Serum</h3>
+    <p>Moisturizes deeply and adds natural glow.</p>
+    <p class="price">₹899</p>
+    <button class="btn" onclick="showDetails('Hydrating Face Serum', '₹899', 'Hyaluronic acid enriched formula for soft and radiant skin.', 'https://atalieneskincare.com/cdn/shop/files/OilCleanser-SeaBuckthornSqualane_3.jpg?v=1685755057&width=400')">View Details</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://atalieneskincare.com/cdn/shop/files/2023packagingadditons_4_6e207384-9be3-4dbf-9f3d-100d415b364c.jpg?v=1750720046&width=400" alt="Moisturizer">
+    <h3>Soft Touch Moisturizer</h3>
+    <p>Light cream for daily nourishment.</p>
+    <p class="price">₹699</p>
+    <button class="btn" onclick="showDetails('Soft Touch Moisturizer', '₹699', 'Non-greasy, aloe-infused cream for smooth texture.', 'https://atalieneskincare.com/cdn/shop/files/2023packagingadditons_4_6e207384-9be3-4dbf-9f3d-100d415b364c.jpg?v=1750720046&width=400')">View Details</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://png.pngtree.com/thumb_back/fh260/background/20250828/pngtree-pastel-cream-jars-and-skincare-items-mint-green-background-image_18337573.webp" alt="Essential Oil">
+    <h3>Lavender Essential Oil</h3>
+    <p>Relaxing scent with calming effect.</p>
+    <p class="price">₹599</p>
+    <button class="btn" onclick="showDetails('Lavender Essential Oil', '₹599', 'Pure essential oil perfect for relaxation and skincare.', 'https://png.pngtree.com/thumb_back/fh260/background/20250828/pngtree-pastel-cream-jars-and-skincare-items-mint-green-background-image_18337573.webp')">View Details</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://previews.123rf.com/images/ellyberr888/ellyberr8882304/ellyberr888230400876/203002882-white-and-blank-unbranded-cosmetic-cream-jar-or-tubes-on-pastel-light-pink-background-skincare.jpg" alt="Toner">
+    <h3>Rose Water Toner</h3>
+    <p>Refreshes skin with gentle floral mist.</p>
+    <p class="price">₹499</p>
+    <button class="btn" onclick="showDetails('Rose Water Toner', '₹499', 'Natural rose extract toner for smooth and refreshed skin.', 'https://previews.123rf.com/images/ellyberr888/ellyberr8882304/ellyberr888230400876/203002882-white-and-blank-unbranded-cosmetic-cream-jar-or-tubes-on-pastel-light-pink-background-skincare.jpg')">View Details</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/61uYXC%2Bo7PL._AC_UF1000,1000_QL80_.jpg" alt="Lip Balm">
+    <h3>Natural Lip Balm</h3>
+    <p>Softens lips and adds mild tint.</p>
+    <p class="price">₹299</p>
+    <button class="btn" onclick="showDetails('Natural Lip Balm', '₹299', 'Coconut oil-based lip balm for lasting moisture.', 'https://m.media-amazon.com/images/I/61uYXC%2Bo7PL._AC_UF1000,1000_QL80_.jpg')">View Details</button>
+  </div>
+</section>
+
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <img id="modalImg" src="" alt="Product Image">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <p class="price" id="modalPrice"></p>
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+
+<script>
+  function showDetails(title, price, desc, imgSrc) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalPrice').textContent = price;
+    document.getElementById('modalDesc').textContent = desc;
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('productModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+  }
+
+  window.onclick = function(e) {
+    const modal = document.getElementById('productModal');
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>
