@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ni's Blog</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fdf6f0;
+    color: #333;
+  }
+  header {
+    background: #ffe4e1;
+    padding: 20px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    color: #d14a6c;
+  }
+  nav {
+    background: #fff0f5;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  nav button {
+    margin: 0 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #d4a5a5;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  nav button:hover {
+    background: #b86a6a;
+  }
+  main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .post-card {
+    background: #fffaf0;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  .post-card h2 {
+    margin: 0 0 10px 0;
+    color: #d14a6c;
+  }
+  .post-card p {
+    margin: 0;
+    color: #555;
+  }
+  .single-post {
+    display: none;
+    background: #fffaf0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  }
+  .single-post h2 {
+    margin-top: 0;
+    color: #d14a6c;
+  }
+  .single-post p {
+    line-height: 1.6;
+    color: #444;
+  }
+  .back-btn {
+    margin-top: 20px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #d4a5a5;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .back-btn:hover {
+    background: #b86a6a;
+  }
+  @media(max-width:600px){
+    .post-card {
+      padding: 12px 15px;
+    }
+    .single-post {
+      padding: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Ni's Blog</h1>
+</header>
+
+<nav>
+  <button onclick="showHome()">Home</button>
+</nav>
+
+<main>
+  <div class="post-list" id="homePage">
+    <div class="post-card" onclick="openPost(0)">
+      <h2>My First Blog Post</h2>
+      <p>This is a short description of my first blog post...</p>
+    </div>
+    <div class="post-card" onclick="openPost(1)">
+      <h2>Learning CSS Tricks</h2>
+      <p>Tips and tricks for styling your web pages effectively...</p>
+    </div>
+    <div class="post-card" onclick="openPost(2)">
+      <h2>Responsive Design Tips</h2>
+      <p>How to make your website look good on any device...</p>
+    </div>
+  </div>
+
+  <div class="single-post" id="postPage">
+    <h2 id="postTitle"></h2>
+    <p id="postContent"></p>
+    <button class="back-btn" onclick="showHome()">← Back to Home</button>
+  </div>
+</main>
+
+<script>
+  const posts = [
+    {
+      title: "My First Blog Post",
+      content: "This is the full content of my first blog post. Here I explain the basics of blogging and how to start a simple blog using HTML, CSS, and JavaScript. This content is fully visible when you click on the post."
+    },
+    {
+      title: "Learning CSS Tricks",
+      content: "This post covers some essential CSS tricks to make your web pages look better. Topics include flexbox, grid, hover effects, and responsive designs. Each trick is explained with examples."
+    },
+    {
+      title: "Responsive Design Tips",
+      content: "Responsive design is important for modern websites. In this post, you will learn about media queries, flexible layouts, and adaptive images to ensure your site looks great on mobile, tablet, and desktop."
+    }
+  ];
+
+  function openPost(index) {
+    document.getElementById('homePage').style.display = 'none';
+    document.getElementById('postPage').style.display = 'block';
+    document.getElementById('postTitle').innerText = posts[index].title;
+    document.getElementById('postContent').innerText = posts[index].content;
+  }
+
+  function showHome() {
+    document.getElementById('postPage').style.display = 'none';
+    document.getElementById('homePage').style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>

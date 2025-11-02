@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niharika's Dashboard</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fdfcf9;
+    color: #333;
+  }
+
+  header {
+    background: linear-gradient(135deg, #ffe3b3, #b3e0ff);
+    text-align: center;
+    padding: 25px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffb6c1;
+  }
+
+  .profile-info h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.4rem;
+    color: #444;
+  }
+
+  .profile-info p {
+    margin: 0;
+    color: #666;
+  }
+
+  h3 {
+    margin-top: 30px;
+    color: #444;
+  }
+
+  .activities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+  }
+
+  .activity-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  }
+
+  .activity-card p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  @media (max-width: 480px) {
+    .profile {
+      flex-direction: column;
+      text-align: center;
+    }
+    .profile img {
+      margin-bottom: 12px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>Niharika's Dashboard</header>
+
+<div class="container">
+  <div class="profile">
+    <img src="https://img.freepik.com/free-vector/cute-young-woman-avatar-character_1308-82646.jpg?w=740&t=st=1699071825~exp=1699072425~hmac=4f5674a4b897f2f5beec6ee759bbb6f55e08f849189fe927e95370e3067ec55f" alt="Profile Picture">
+    <div class="profile-info">
+      <h2>Niharika</h2>
+      <p>Software Developer | Avid Reader</p>
+    </div>
+  </div>
+
+  <h3>Recent Activities</h3>
+  <div class="activities">
+    <div class="activity-card">
+      <p><strong>Completed:</strong> "Build a personal website"</p>
+      <p><em>Today at 9:00 AM</em></p>
+    </div>
+    <div class="activity-card">
+      <p><strong>Read:</strong> "JavaScript ES6 Guide"</p>
+      <p><em>Yesterday at 6:30 PM</em></p>
+    </div>
+    <div class="activity-card">
+      <p><strong>Commented:</strong> "React Router Tutorial"</p>
+      <p><em>2 days ago</em></p>
+    </div>
+    <div class="activity-card">
+      <p><strong>Joined:</strong> "Frontend Dev Community"</p>
+      <p><em>3 days ago</em></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

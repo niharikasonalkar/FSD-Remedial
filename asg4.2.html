@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clothing Product Gallery</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fdfcf9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #444;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    }
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    .product-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      text-align: center;
+    }
+    .modal-content img {
+      width: 80%;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      color: #333;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #ff4c4c;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+    }
+    .modal-content p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .modal-content .price {
+      font-weight: 700;
+      color: #2563eb;
+      font-size: 1.2rem;
+    }
+    @media (max-width: 480px) {
+      .modal-content img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Clothing Product Gallery</h1>
+
+<div class="gallery">
+  <div class="product-card" onclick="openModal('Casual T‑Shirt', 'Comfortable cotton t‑shirt for daily wear.', '₹1500', 'https://images.unsplash.com/photo-1602810312132-4e8c220cdbb8?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400')">
+    <img src="https://images.unsplash.com/photo-1602810312132-4e8c220cdbb8?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400" alt="Casual T‑Shirt">
+    <h3>Casual T‑Shirt</h3>
+    <p>₹1500</p>
+  </div>
+
+  <div class="product-card" onclick="openModal('Denim Jacket', 'Stylish denim jacket for all seasons.', '₹3500', 'https://images.unsplash.com/photo-1562158070-44c2fc0d76f0?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400')">
+    <img src="https://images.unsplash.com/photo-1562158070-44c2fc0d76f0?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400" alt="Denim Jacket">
+    <h3>Denim Jacket</h3>
+    <p>₹3500</p>
+  </div>
+
+  <div class="product-card" onclick="openModal('Summer Dress', 'Light and breezy dress perfect for summer outings.', '₹2500', 'https://images.unsplash.com/photo-1520975917544-c2a1f7801b5a?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400')">
+    <img src="https://images.unsplash.com/photo-1520975917544-c2a1f7801b5a?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400" alt="Summer Dress">
+    <h3>Summer Dress</h3>
+    <p>₹2500</p>
+  </div>
+</div>
+
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="" alt="Product Image">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <p class="price" id="modalPrice"></p>
+  </div>
+</div>
+
+<script>
+function openModal(title, desc, price, imgSrc) {
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalDesc').innerText = desc;
+  document.getElementById('modalPrice').innerText = price;
+  document.getElementById('modalImage').src = imgSrc;
+  document.getElementById('productModal').style.display = 'block';
+}
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+window.onclick = function(event) {
+  const modal = document.getElementById('productModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
+</script>
+
+</body>
+</html>
