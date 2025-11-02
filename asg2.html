@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9f7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    width: 360px;
+    text-align: center;
+  }
+
+  h2 {
+    color: #4b4b6b;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  input:focus {
+    border-color: #a7c7e7;
+    box-shadow: 0 0 5px #a7c7e7aa;
+    outline: none;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: #b6e2d3;
+    color: #2e4b3d;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: #a0d6c3;
+  }
+
+  /* Success message styling */
+  #successMessage {
+    display: none; /* Hidden initially */
+    margin-top: 20px;
+    color: #2e7d32; /* Green */
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  /* Responsive */
+  @media(max-width: 400px) {
+    .container {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Student Registration</h2>
+  <form id="registrationForm" onsubmit="showMessage(); return false;">
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter your username">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" placeholder="10-digit phone number">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter password">
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" placeholder="Re-enter password">
+
+    <button type="submit">Register</button>
+
+    <div id="successMessage">🎉 Registration Successful!</div>
+  </form>
+</div>
+
+<!-- Inline JS just for showing message -->
+<script>
+  function showMessage() {
+    document.getElementById('successMessage').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
