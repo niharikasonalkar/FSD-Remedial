@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Niharika’s Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Internal CSS -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffafc;
+      color: #444;
+    }
+
+    header {
+      background: linear-gradient(135deg, #fddde6, #d6eaf8);
+      color: #2c3e50;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #34495e;
+      margin-bottom: 20px;
+      border-left: 4px solid #f7b6c2;
+      padding-left: 10px;
+    }
+
+    .skills-list li {
+      list-style: none;
+      padding: 8px;
+      margin: 6px 0;
+      background-color: #f9e5eb;
+      border-radius: 8px;
+    }
+
+    .skills-list li:hover {
+      background-color: #f8d7e3;
+    }
+
+    .contact-form {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background-color: #f7b6c2 !important;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #f49ab0 !important;
+    }
+
+    footer {
+      text-align: center;
+      background: #fddde6;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 30px;
+    }
+  </style>
+
+  <!-- External CSS (simulated for example) -->
+  <link rel="stylesheet" href="data:text/css,h1{letter-spacing:1px;}label{font-weight:bold;}">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1 style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">Niharika’s Portfolio</h1> <!-- inline CSS used -->
+    <p>Web Developer • Designer • Student</p>
+  </header>
+
+  <div class="container">
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm Niharika, a computer science student learning front-end web development. I enjoy building simple and neat web pages using HTML, CSS, and Bootstrap.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="skills-list">
+            <li>HTML & CSS</li>
+            <li>Bootstrap</li>
+            <li>Responsive Design</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul class="skills-list">
+            <li>Python</li>
+            <li>JavaScript (Basics)</li>
+            <li>Git & GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-form">
+        <form>
+          <div class="mb-3">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name">
+          </div>
+
+          <div class="mb-3">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+          </div>
+
+          <div class="mb-3">
+            <label for="message">Message:</label>
+            <textarea id="message" class="form-control" rows="3" placeholder="Your message..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+
+
+</body>
+</html>
